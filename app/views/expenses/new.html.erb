@@ -1,0 +1,12 @@
+<h1>Create New Expense</h1>
+<%= form_for(@expense) do |f| %>
+  <%= f.label :name %> <%= f.text_field :name %></br>
+
+  <%= f.label :category_id %> <%= f.select :category_id, ['makanan', 'iuran', 'transport']%> </br>
+
+  <%= f.label :amount %> <%= f.text_field :amount %></br>
+
+  <%= f.label :date %> <%= f.date_field :date, :value => Time.now.strftime('%Y-%m-%d') %></br>
+
+  <%= f.submit "Save" %></br>
+<%end%>
