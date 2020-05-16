@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_155500) do
+ActiveRecord::Schema.define(version: 2020_05_15_213108) do
 
   create_table "expenses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "name"
     t.integer "amount"
     t.datetime "date"
     t.integer "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
