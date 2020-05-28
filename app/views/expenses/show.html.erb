@@ -1,5 +1,5 @@
-<h1>Expense Ke - id</h1>
+<h1>Expense Ke <%= @expense.id %></h1>
 <p> Name : <%= @expense.name %></p>
 <p> Amount :<%= @expense.amount %></p>
-<p> Date :<%= @expense.date %></p>
-<p> Category :<%= @expense.category_id %></p>
+<p> Date :<%= @expense.date.strftime("%m/%d/%Y") %></p>
+<p> Category :<%= @expense.category.name %></p>
