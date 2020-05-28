@@ -1,7 +1,7 @@
 class ExpensesController < ApplicationController
   def new
     @expense = Expense.new
-    # @categories = Category.all
+    @categories = Category.all
   end
 
   def create
@@ -13,7 +13,11 @@ class ExpensesController < ApplicationController
   end
 
   def index
-    @expenses = Expense.all
+    if params[:expense] && params[:expense][:category_id].present?
+      @expenses = Expense.filter_by_category(params[:expense][:category_id])
+    else
+      @expenses = Expense.all
+    end
   end
 
   def show
@@ -22,6 +26,7 @@ class ExpensesController < ApplicationController
 
   def edit
     @expense = Expense.find(params[:id])
+    @categories = Category.all
   end
 
   #when we run edit method then we update the database by update method
