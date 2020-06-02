@@ -1,19 +1,20 @@
-<table>
+<table class="pretty">
   <tr>
-    <td>Filter by Category</td>
-    <td>
+    <th>Filter by Category</th>
+    <th>
       <%= form_tag expenses_path, :method => 'get' do %>
         <%= collection_select(:expense, :category_id, Category.all, :id, :name, prompt: true)%>
         <%= submit_tag "look" %>
       <% end %>
+    </th>
   </tr>
 
   <tr>
-    <td> Name </td>
-    <td> Amount </td>
-    <td> Date </td>
-    <td> Category </td>
-    <td> </td>
+    <th><%= sortable "name" %></th>
+    <th><%= sortable "amount" %></th>
+    <th><%= sortable "date" %></th>
+    <th><%= sortable "category_id" %></th>
+    <th> </th>
   </tr>
 
   <% @expenses.each do |expense| %>
@@ -33,7 +34,5 @@
   <tr>
     <td><%= link_to 'New Expense', new_expense_path %></td>
   </tr>
-
-  <%=params.inspect %>
 
 </table>
