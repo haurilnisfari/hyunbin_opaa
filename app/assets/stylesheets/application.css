@@ -17,3 +17,28 @@
 @import "selectize/dist/css/selectize";
 @import "selectize/dist/css/selectize.default";
 @import "bootstrap/scss/bootstrap";
+
+table.pretty {
+  border-collapse: collapse;
+}
+
+.pretty td, .pretty th {
+  padding: 4px 10px;
+  border: solid 1px #AAA;
+}
+
+.pretty th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.pretty th .asc {
+  background-image: url("up_arrow.png");
+  padding-right: 20px;
+}
+
+.pretty th .desc {
+  background-image: url("down_arrow.png");
+  padding-right: 20px;
+}

@@ -1,4 +1,6 @@
 class ExpensesController < ApplicationController
+  helper_method :sort_column, :sort_direction
+
   def new
     @expense = Expense.new
     @categories = Category.all
@@ -16,7 +18,7 @@ class ExpensesController < ApplicationController
     if params[:expense] && params[:expense][:category_id].present?
       @expenses = Expense.filter_by_category(params[:expense][:category_id])
     else
-      @expenses = Expense.all
+      @expenses = Expense.order(sort_column + " " + sort_direction)
     end
   end
 
@@ -49,6 +51,14 @@ class ExpensesController < ApplicationController
 
   def resource_params
     params.require(:expense).permit(:name, :amount, :date, :category_id)
+  end
+
+  def sort_column
+    Expense.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
 end
