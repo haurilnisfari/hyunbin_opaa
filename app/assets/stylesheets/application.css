@@ -27,6 +27,10 @@ table.pretty {
   border: solid 1px #AAA;
 }
 
+.pretty .price {
+  text-align: right;
+}
+
 .pretty th .current {
   padding-right: 12px;
   background-repeat: no-repeat;

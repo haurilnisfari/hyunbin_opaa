@@ -20,7 +20,7 @@
   <% @expenses.each do |expense| %>
   <tr>
     <td><%= expense.name %></td>
-    <td><%= expense.amount %></td>
+    <td class="price"><%= expense.amount %></td>
     <td><%= expense.date.strftime("%m/%d/%Y") %></td>
     <td><%= expense.category.name%></td>
     <td><%= link_to 'Detail', expense_path(expense) %> |
