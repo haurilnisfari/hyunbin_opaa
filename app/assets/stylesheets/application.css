@@ -46,3 +46,11 @@ table.pretty {
   background-image: url("down_arrow.png");
   padding-right: 20px;
 }
+
+.red-text {
+  color: red;
+}
+
+.small-text {
+  font-size: 12px;
+}
