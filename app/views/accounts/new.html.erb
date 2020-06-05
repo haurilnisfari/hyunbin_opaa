@@ -6,68 +6,8 @@
   <div>
     <%= f.text_field :name %>
   </div>
-  <% if @account.errors[:name].present? %>
-    <span class="red-text small-text">
-      <%= 'Name ' + @account.errors[:name].join(", ") %>
-    </span>
-  <% end %>
 
   <div>
-    <%= f.label :username %>
-  </div>
-  <div>
-    <%= f.text_field :username %>
-  </div>
-  <% if @account.errors[:username].present? %>
-    <span class="red-text small-text">
-      <%= 'Username ' + @account.errors[:username].join(", ") %>
-    </span>
-  <% end %>
-
-  <div>
-    <%= f.label :email %>
-  </div>
-  <div>
-    <%= f.text_field :email %>
-  </div>
-  <% if @account.errors[:email].present? %>
-    <span class="red-text small-text">
-      <%= 'Email ' + @account.errors[:email].join(", ") %>
-    </span>
-  <% end %>
-
-  <div>
-    <%= f.label :bio %>
-  </div>
-  <div>
-    <%= f.text_area :bio %>
-  </div>
-
-  <div>
-    <%= f.label :password %>
-  </div>
-  <div>
-    <%= f.password_field :password %>
-  </div>
-  <% if @account.errors[:password].present? %>
-    <span class="red-text small-text">
-      <%= 'Password ' + @account.errors[:password].join(", ") %>
-    </span>
-  <% end %>
-
-  <div>
-    <%= f.label :password_confirmation %>
-  </div>
-  <div>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <% if @account.errors[:password_confirmation].present? %>
-    <span class="red-text small-text">
-      <%= 'Password Confirmation ' + @account.errors[:password_confirmation].join(", ") %>
-    </span>
-  <% end %>
-
-  <div>
-    <%= f.submit "Register", notice: 'Berhasil registrasi !' %>
+    <%= f.submit "Create", notice: 'Berhasil membuat Akun !' %>
   </div>
 <% end %>

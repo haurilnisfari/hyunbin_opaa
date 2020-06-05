@@ -7,10 +7,10 @@ class SessionsController < ApplicationController
     username = params[:username]
     password = params[:password]
 
-    account = Account.find_by_username(username)
-    if account
-      if account.authenticate(password)
-        session[:account_id] = account.id
+    user = User.find_by_username(username)
+    if user
+      if user.authenticate(password)
+        session[:user_id] = user.id
         redirect_to root_path, notice: "Logged in!"
       else
         redirect_to new_session_path, notice: 'Username atau password salah'
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:account_id] = nil
+    session[:user_id] = nil
     redirect_to root_path, notice: "Logged out!"
   end
 end

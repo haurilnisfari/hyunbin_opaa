@@ -1,0 +1,73 @@
+<h1>Create User</h1>
+<%= form_for(@user) do |f| %>
+  <div>
+    <%= f.label :name %>
+  </div>
+  <div>
+    <%= f.text_field :name %>
+  </div>
+  <% if @user.errors[:name].present? %>
+    <span class="red-text small-text">
+      <%= 'Name ' + @user.errors[:name].join(", ") %>
+    </span>
+  <% end %>
+
+  <div>
+    <%= f.label :username %>
+  </div>
+  <div>
+    <%= f.text_field :username %>
+  </div>
+  <% if @user.errors[:username].present? %>
+    <span class="red-text small-text">
+      <%= 'Username ' + @user.errors[:username].join(", ") %>
+    </span>
+  <% end %>
+
+  <div>
+    <%= f.label :email %>
+  </div>
+  <div>
+    <%= f.text_field :email %>
+  </div>
+  <% if @user.errors[:email].present? %>
+    <span class="red-text small-text">
+      <%= 'Email ' + @user.errors[:email].join(", ") %>
+    </span>
+  <% end %>
+
+  <div>
+    <%= f.label :bio %>
+  </div>
+  <div>
+    <%= f.text_area :bio %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+  </div>
+  <div>
+    <%= f.password_field :password %>
+  </div>
+  <% if @user.errors[:password].present? %>
+    <span class="red-text small-text">
+      <%= 'Password ' + @user.errors[:password].join(", ") %>
+    </span>
+  <% end %>
+
+  <div>
+    <%= f.label :password_confirmation %>
+  </div>
+  <div>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <% if @user.errors[:password_confirmation].present? %>
+    <span class="red-text small-text">
+      <%= 'Password Confirmation ' + @user.errors[:password_confirmation].join(", ") %>
+    </span>
+  <% end %>
+
+  <div>
+    <%= f.submit "Register", notice: 'Berhasil registrasi !' %>
+  </div>
+<% end %>
