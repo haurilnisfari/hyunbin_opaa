@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_account
+  helper_method :current_user
 
-  def current_account
-    if session[:account_id]
-      @current_account ||= Account.find(session[:account_id])
+  def current_user
+    if session[:user_id]
+      @current_user ||= User.find(session[:user_id])
     else
-      @current_account = nil
+      @current_user = nil
     end
   end
 end
