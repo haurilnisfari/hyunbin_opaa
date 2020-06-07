@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
-  helper_method :sort_column, :sort_direction
+  helper_method :sort_column, :sort_direction, :current_user
 
   def new
     @expense = Expense.new
@@ -15,10 +15,13 @@ class ExpensesController < ApplicationController
   end
 
   def index
-    if params[:expense] && params[:expense][:category_id].present?
-      @expenses = Expense.filter_by_category(params[:expense][:category_id])
+    if current_user && current_user[:account_id]
+      @expenses = Expense.based_account_id(current_user[:account_id]).order(sort_column + " " + sort_direction)
+      if current_user && current_user[:account_id] && params[:expense] && params[:expense][:category_id].present?
+        @expenses = Expense.based_account_id(current_user[:account_id]).filter_by_category(params[:expense][:category_id])
+      end
     else
-      @expenses = Expense.order(sort_column + " " + sort_direction)
+      redirect_to root_path
     end
   end
 
@@ -50,7 +53,7 @@ class ExpensesController < ApplicationController
   private
 
   def resource_params
-    params.require(:expense).permit(:name, :amount, :date, :category_id)
+    params.require(:expense).permit(:name, :amount, :date, :category_id, :account_id)
   end
 
   def sort_column

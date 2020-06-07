@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     if user
       if user.authenticate(password)
         session[:user_id] = user.id
-        redirect_to root_path, notice: "Logged in!"
+        redirect_to expenses_path, notice: "Logged in!"
       else
         redirect_to new_session_path, notice: 'Username atau password salah'
       end
