@@ -1,4 +1,10 @@
 <h1>Create User</h1>
+
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+<p class="notice"><%= flash[:notice] %></p>
+
 <%= form_for(@user) do |f| %>
   <div>
     <%= f.label :name %>
@@ -44,14 +50,6 @@
   </div>
 
   <div>
-    <%= f.label :account_id %>
-  </div>
-  <div>
-    <%= f.text_area :account_id %>
-  </div>
-
-
-  <div>
     <%= f.label :password %>
   </div>
   <div>
@@ -76,6 +74,6 @@
   <% end %>
 
   <div>
-    <%= f.submit "Register", notice: 'Berhasil registrasi !' %>
+    <%= f.submit "Register" %>
   </div>
 <% end %>

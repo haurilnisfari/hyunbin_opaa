@@ -1,2 +1,6 @@
 <h1> Akun ke-<%= @account.id %> </h1>
 <p> Name : <%= @account.name %> </p>
+<p> Account Owner : <% @account.users.each do |user| %>
+                      <%= user.username %>
+                    <% end %>
+</p>

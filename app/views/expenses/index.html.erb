@@ -10,6 +10,11 @@
   </tr>
 
   <tr>
+    <th> Account Name </th>
+    <th> <%= account_name %> </th>
+  </tr>
+
+  <tr>
     <th><%= sortable "name" %></th>
     <th><%= sortable "amount" %></th>
     <th><%= sortable "date" %></th>
@@ -34,7 +39,5 @@
   <tr>
     <td><%= link_to 'New Expense', new_expense_path %></td>
   </tr>
-
-  <%= params.inspect %>
 
 </table>

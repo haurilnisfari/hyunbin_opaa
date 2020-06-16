@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+  helper_method :current_user
+  before_action :require_login
 
   def new
     @account = Account.new
@@ -7,9 +9,12 @@ class AccountsController < ApplicationController
   def create
     account = Account.new(resource_params)
     account.save
+    current_user.account_id = account.id
+    current_user.save
 
-    redirect_to accounts_path
+    redirect_to expenses_path, notice: "Successfully Created an Account"
   end
+
 
   def index
     @accounts = Account.all
@@ -38,6 +43,7 @@ class AccountsController < ApplicationController
   private
 
   def resource_params
+    puts "nnnn"
     params.require(:account).permit(:name)
   end
 

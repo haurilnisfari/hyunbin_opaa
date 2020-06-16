@@ -1,4 +1,5 @@
 <h1>Create Account</h1>
+
 <%= form_for(@account) do |f| %>
   <div>
     <%= f.label :name %>
@@ -8,6 +9,6 @@
   </div>
 
   <div>
-    <%= f.submit "Create", notice: 'Berhasil membuat Akun !' %>
+    <%= f.submit "Create", notice: 'Create Account Successfully' %>
   </div>
 <% end %>

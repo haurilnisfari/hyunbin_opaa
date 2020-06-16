@@ -14,5 +14,4 @@ class Expense < ApplicationRecord
     where(category_id: category_id)
   end
 
-
 end

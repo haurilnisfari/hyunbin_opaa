@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :expenses
   resources :categories
   resources :accounts
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

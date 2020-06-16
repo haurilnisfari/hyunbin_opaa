@@ -1,5 +1,6 @@
 class ExpensesController < ApplicationController
-  helper_method :sort_column, :sort_direction, :current_user
+  helper_method :sort_column, :sort_direction, :current_user, :account_name
+  before_action :require_login
 
   def new
     @expense = Expense.new
@@ -9,6 +10,8 @@ class ExpensesController < ApplicationController
   def create
     flash[:notice] = "Expense has been created"
     expense = Expense.new(resource_params)
+    expense.save
+    expense.account_id = current_user.account_id
     expense.save
 
     redirect_to expenses_path
@@ -21,7 +24,7 @@ class ExpensesController < ApplicationController
         @expenses = Expense.based_account_id(current_user[:account_id]).filter_by_category(params[:expense][:category_id])
       end
     else
-      redirect_to root_path
+      redirect_to new_account_path, notice: "You haven't an Account, Please Create an Account!"
     end
   end
 
@@ -62,6 +65,11 @@ class ExpensesController < ApplicationController
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  def account_name
+    account_id = current_user.account_id
+    Account.where(id: account_id).pluck(:name).join(" ")
   end
 
 end

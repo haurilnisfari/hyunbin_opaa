@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  layout false
 
   def new
   end
@@ -13,10 +14,10 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         redirect_to expenses_path, notice: "Logged in!"
       else
-        redirect_to new_session_path, notice: 'Username atau password salah'
+        redirect_to new_session_path, notice: 'Username or password invalid'
       end
     else
-      redirect_to new_session_path, notice: 'Username atau password salah'
+      redirect_to new_session_path, notice: 'Username or password invalid'
     end
   end
 

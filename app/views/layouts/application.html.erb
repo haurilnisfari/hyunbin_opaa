@@ -18,7 +18,9 @@
         <% if current_user %>
           Logged in as <%= current_user.username %> |
           <%= link_to "Logout", logout_path %> |
-          <%= link_to "Create New Expense", new_expense_path %>
+          <%= link_to "Create New Expense", new_expense_path %> |
+          <%= link_to "Create New Account", new_account_path %> |
+          <%= link_to "Create New Category", new_category_path %>
         <% else %>
           <%= link_to "Sign Up", signup_path %> |
           <%= link_to "Login", login_path %>

@@ -1,11 +1,17 @@
 <table>
   <tr>
     <td> Name </td>
+    <td> Account Owner </td>
   </tr>
 
   <% @accounts.each do |account| %>
   <tr>
     <td> <%= account.name %> </td>
+    <% array = [] %>
+    <% account.users.each do |user| %>
+      <% array << user.username %>
+    <% end %>
+    <td><%= array.join(', ') %></td>
     <td> <%= link_to 'Detail', account_path(account) %> |
          <%= link_to 'Edit', edit_account_path(account) %> |
          <%= link_to 'Delete', account_path(account), method: :delete, data: {confirm: "Are you sure?"} %> </td>

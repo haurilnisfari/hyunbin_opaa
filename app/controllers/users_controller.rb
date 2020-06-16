@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  layout false
 
   def new
     @user = User.new
@@ -8,11 +9,15 @@ class UsersController < ApplicationController
     @user = User.new(resource_params)
 
     if @user.save
-      flash[:notice] = "User has been created"
+      flash[:notice] = "User has been created, Please Login :)"
       redirect_to login_path
     else
       render "new"
     end
+  end
+
+  def index
+    @users = User.all
   end
 
   private
