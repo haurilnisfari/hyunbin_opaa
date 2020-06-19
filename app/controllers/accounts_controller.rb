@@ -17,7 +17,7 @@ class AccountsController < ApplicationController
 
 
   def index
-    @accounts = Account.all
+    @accounts = Account.where(id: current_user.account_id)
   end
 
   def show
@@ -35,15 +35,20 @@ class AccountsController < ApplicationController
   end
 
   def destroy
+    current_user.account_id = nil
+    current_user.save
     @account = Account.find(params[:id])
     @account.destroy
+    expenses = Expense.where(account_id: (params[:id]))
+    expenses.each do |expense|
+      expense.destroy
+    end
     redirect_to accounts_path
   end
 
   private
 
   def resource_params
-    puts "nnnn"
     params.require(:account).permit(:name)
   end
 

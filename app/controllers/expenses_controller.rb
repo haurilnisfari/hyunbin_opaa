@@ -43,7 +43,7 @@ class ExpensesController < ApplicationController
     flash[:notice] = "Expense has been updated"
     expense = Expense.find(params[:id]) #catch the expense which has the active id
     expense.update(resource_params)
-    redirect_to expense_path(expense)
+    redirect_to expenses_path
   end
 
   def destroy
