@@ -2,13 +2,16 @@ class CategoriesController < ApplicationController
   before_action :require_login
 
   def new
-    @category = Category.new
+    if current_user && current_user[:account_id]
+      @category = Category.new
+    else
+      redirect_to new_account_path, notice: "You don't have an Account, Please Create an Account!"
+    end
   end
 
   def create
     category = Category.new(resource_params)
     category.save
-
     redirect_to categories_path
   end
 

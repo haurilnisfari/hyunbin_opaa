@@ -3,8 +3,12 @@ class ExpensesController < ApplicationController
   before_action :require_login
 
   def new
-    @expense = Expense.new
-    @categories = Category.all
+    if current_user && current_user[:account_id]
+      @expense = Expense.new
+      @categories = Category.all
+    else
+      redirect_to new_account_path, notice: "You don't have an Account, Please Create an Account!"
+    end
   end
 
   def create
@@ -13,7 +17,6 @@ class ExpensesController < ApplicationController
     expense.save
     expense.account_id = current_user.account_id
     expense.save
-
     redirect_to expenses_path
   end
 
@@ -24,7 +27,7 @@ class ExpensesController < ApplicationController
         @expenses = Expense.based_account_id(current_user[:account_id]).filter_by_category(params[:expense][:category_id])
       end
     else
-      redirect_to new_account_path, notice: "You haven't an Account, Please Create an Account!"
+      redirect_to new_account_path, notice: "You don't have an Account, Please Create an Account!"
     end
   end
 
