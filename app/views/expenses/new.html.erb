@@ -1,36 +1,70 @@
-<h1>Create New Expense</h1>
-<%= form_for(@expense) do |f| %>
-  <%= f.label :name %> <%= f.text_field :name %></br>
+<!-- Main -->
+<main>
+    <section class="section-expense-form">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 pl-lg-0">
+                    <div class="card card-expense">
+                        <div class="expense-new mt 3">
+                            <h2 class="heading-new-expense">Create New Expense</h2>
+                                <div class="form-group">
+                                    <%= form_for(@expense) do |f| %>
+                                        <%= f.label :name, { class: "control-label col-sm-3"} %>
+                                        <div class="col-sm-10">
+                                            <%= f.text_field :name, :class => "form-control", :placeholder => "Enter Name" %>
+                                        </div>
 
-  <%= f.label :category_id %>
-  <%= f.select :category_id, @categories.pluck(:name, :id), {prompt: "select"}, { class: "selectize" } %> </br>
+                                        <%= f.label :category, { class: "control-label col-sm-3"} %>
+                                        <div class="col-sm-10">
+                                            <%= f.select :category_id, @categories.pluck(:name, :id), {prompt: "Select Category"}, { class: "form-control" } %>
+                                            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#addNewCategory">
+                                                Add New Category
+                                            </button>
+                                        </div>
 
-  <%= f.label :amount %> <%= f.text_field :amount %></br>
+                                        <%= f.label :amount, { class: "control-label col-sm-3"} %>
+                                        <div class="col-sm-10">
+                                            <%= f.text_field :amount, :class => "form-control", :placeholder => "Enter Amount" %>
+                                        </div>
 
-  <%= f.label :date %> <%= f.date_field :date, :value => Time.now.strftime('%Y-%m-%d') %></br>
+                                        <%= f.label :date, { class: "control-label col-sm-3"} %>
+                                        <div class="col-sm-10">
+                                            <%= f.date_field :date, :class => "form-control", :value => Time.now.strftime('%Y-%m-%d') %>
+                                        </div> </br>
 
-  <%= f.submit "Save" %></br>
-<%end%>
+                                        <%= f.submit "Save" , { class: "btn btn-save-account mb-2 px-4" } %>
+                                    <% end %>
+                                </div>
 
-
-<div class="modal fade category-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-        <h4 class="modal-title" id="mySmallModalLabel">Add Category</h4>
-      </div>
-      <div class="modal-body">
-        <%= form_for Category.new do |f| %>
-          <div class="form-group">
-            <%= f.label :name %>
-            <%= f.text_field :name, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.submit class: "btn btn-primary" %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="addNewCategory" tabindex="-1" role="dialog" aria-labelledby="addNewCategoryTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="addNewCategoryTitle">Create New Category</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <%= form_for Category.new do |f| %>
+                                                    <%= f.label :name, { class: "control-label col-sm-3" }%>
+                                                    <div class="col-sm-10">
+                                                        <%= f.text_field :name, :class => "form-control", :placeholder => "Enter Name" %> </br>
+                                                    </div>
+                                                    <%= f.submit "Cancel", :type => :reset, :class => "btn btn-secondary mb-2 px-4", "data-dismiss" => "modal", "aria-hidden" => "true" %>
+                                                    <%= f.submit "Save", :class => "btn btn-save-account mb-2 px-4" %>
+                                                <% end %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

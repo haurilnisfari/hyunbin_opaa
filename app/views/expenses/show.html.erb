@@ -1,5 +1,43 @@
-<h1>Expense Ke <%= @expense.id %></h1>
-<p> Name : <%= @expense.name %></p>
-<p> Amount :<%= @expense.amount %></p>
-<p> Date :<%= @expense.date.strftime("%m/%d/%Y") %></p>
-<p> Category :<%= @expense.category.name %></p>
+<main>
+    <section class="section-expense-form">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 pl-lg-0">
+                    <div class="card card-expense">
+                        <div class="expense-new mt 3">
+                            <h2 class="heading-new-expense">Detail Expense</h2>
+                            <div class="form-group">
+                                <%= form_for(@expense) do |f| %>
+                                    <%= f.label :name, { class: "control-label col-sm-3"} %> :  
+                                    <%=  @expense.name %>
+                                    </br>
+
+                                    <%= f.label :amount, { class: "control-label col-sm-3"} %> :  
+                                    <%=  @expense.amount %>
+                                    </br>
+
+                                    <%= f.label :date, { class: "control-label col-sm-3"} %> : 
+                                    <%=  @expense.date.strftime("%m/%d/%Y") %>
+                                    </br>
+
+                                    <%= f.label :category, { class: "control-label col-sm-3"} %> :
+                                    <%=  @expense.category.name %>
+                                    </br>
+
+                                    <%= f.label :account, { class: "control-label col-sm-3"} %> :
+                                    <%=  @expense.account.name %>
+                                    </br>
+                                    </br>
+
+                                    <button type="submit" class="btn btn-add-new-expense">
+                                        <%= link_to 'Back to Expenses', expenses_path %>
+                                    </button>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section
+</main>

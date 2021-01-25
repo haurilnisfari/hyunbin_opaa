@@ -31,7 +31,7 @@ class AccountsController < ApplicationController
   def update
     account = Account.find(params[:id])
     account.update(resource_params)
-    redirect_to account_path(account)
+    redirect_to accounts_path
   end
 
   def destroy

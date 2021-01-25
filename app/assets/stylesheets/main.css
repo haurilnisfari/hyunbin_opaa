@@ -1,0 +1,237 @@
+body {
+  background-color: #e4e6eb;
+  font-family: 'Overpass', sans-serif;
+  color: black;
+}
+
+.navbar-brand img {
+  max-height: 40px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: black;
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+  font-weight: bold;
+  color: black !important;
+}
+
+.nav-item.dropdown {
+  margin-top: -2px;
+}
+
+.nav-link.dropdown-toggle img {
+  max-height: 30px;
+}
+
+header {
+  padding: 200px 0 300px;
+  margin-top: -95px;
+  background-image: url("banner.jpg");
+  background-size: cover;
+  max-height: 180px;
+}
+
+header h1 {
+  color: #FEC148;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  font-size: 60px;
+}
+
+header p {
+  color: #FEC148;
+  font-family: 'Overpass', sans-serif;
+  font-size: 22px;
+}
+
+form {
+  padding: 25px;
+}
+
+.card {
+  margin-top: -50px;
+  border-radius: 2%;
+}
+
+.dropdown-category {
+  margin-top: -90px;
+}
+
+.dropdown-accountof {
+  margin-top: -90px;
+}
+
+.dropdown-account {
+  margin-top: -25px;
+}
+
+.section-index {
+  min-height: 700px;
+  background-color: #142936;
+  margin-top: -28px;
+}
+
+.section-index-title {
+  margin-top: 100px;
+  margin-bottom: 15px;
+  color: #e4e6eb;
+}
+
+.section-index-cat {
+  min-height: 1200px;
+  background-color: #142936;
+  padding-top: -20px;
+  margin-top: 0px;
+}
+
+.section-index-title-cat {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  color: #e4e6eb;
+}
+
+.section-index-acc {
+  min-height: 400px;
+  background-color: #142936;
+  margin-top: 0px;
+}
+
+h2 {
+  color: #ffffff;
+  font-family: 'Overpass', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.index-list thead {
+  color: black;
+  font-family: 'Overpass', sans-serif;
+  font-weight: bolder;
+}
+
+.index-list tbody {
+  color: black;
+  font-family: 'Overpass', sans-serif;
+  font-weight: lighter;
+}
+
+.btn-add-new-expense {
+  background-color: #FEC148;
+  color: #ffffff;
+  margin-top: 20px;
+}
+
+.btn-add-new-expense:hover {
+  background-color: #F8CB73;
+  color: #ffffff;
+}
+
+.section-expense-form {
+  min-height: 550px;
+  background-color: #142936;
+}
+
+.heading-new-expense {
+  color: #142936;
+  margin: 20px;
+  text-align: center;
+}
+
+.btn-save-expense {
+  background-color: #FEC148;
+  color: #ffffff;
+  margin-left: 20px;
+  margin-bottom: 100px;
+}
+
+.btn-save-expense:hover {
+  background-color: #F8CB73;
+  color: #ffffff;
+}
+
+.section-account-form {
+  min-height: 250px;
+  background-color: #142936;
+}
+
+.heading-new-account {
+  color: #142936;
+  margin: 20px;
+  text-align: center;
+}
+
+.btn-save-account {
+  background-color: #FEC148;
+  color: #ffffff;
+  margin-left: 20px;
+  margin-bottom: 100px;
+}
+
+.btn-save-account:hover {
+  background-color: #F8CB73;
+  color: #ffffff;
+}
+
+.section-category-form {
+  min-height: 250px;
+  background-color: #142936;
+}
+
+.section-budget-form {
+  min-height: 800px;
+  background-color: #142936;
+}
+
+.heading-new-category {
+  color: #142936;
+  margin: 20px;
+  text-align: center;
+}
+
+.btn-save-category {
+  background-color: #FEC148;
+  color: #ffffff;
+  margin-left: 20px;
+  margin-bottom: 100px;
+}
+
+.btn-save-category:hover {
+  background-color: #F8CB73;
+  color: #ffffff;
+}
+
+.login-body {
+  background-color: #142936;
+  font-family: 'Overpass', sans-serif;
+  color: black;
+}
+
+.navbar-brand-login img {
+  max-height: 50px;
+  margin-top: 20px;
+}
+
+.card-login {
+  margin: 150px 25px 25px 25px;
+  border-radius: 2%;
+}
+
+.heading-login-title {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  font-size: 30px;
+  text-align: right;
+}
+
+.heading-login {
+  color: #142936;
+  margin: 20px;
+  text-align: center;
+}
+
+.form-check-label {
+  font-size: 12px;
+}
+/*# sourceMappingURL=main.css.map */

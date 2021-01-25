@@ -1,0 +1,43 @@
+<!-- Main -->
+<main>
+    <section class="section-index-cat" id="index">
+        <div class="container">
+            <div class="row">
+                <div class="col text-left section-index-title-cat">
+                    <h2> <%= @budget.name %> </h2>
+                    <h5> Periode Budgeting <%= @budget.period %> </h5>
+                </div>
+            </div>
+
+            <div class="index-list col-lg-12 pl-lg-12 align-center">
+                <table class="table table-responsive-sm text-center table-light table-striped" >
+                    <thead>
+                        <tr class="align-middle">
+                            <th class="text-left">Category</th>
+                            <th>Budgeting</th>
+                            <th>Spent this Month</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% @bcs.each do |bc| %>
+                            <tr>
+                                <td class="text-left"><%= bc.category.name %></td>
+                                <td class="price"><%= bc.amount %></td>
+                                <td class="price"><%= @expenses.where(category_id:bc.category_id).sum(:amount)%></td>
+                            </tr>
+                        <%end%>
+
+                        <tr>
+                            <th>Jumlah</th>
+                            <th class="price"><%= @bcs.sum(:amount)%></th>
+                            <th class="price"><%= @expenses.sum(:amount)%></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </section>
+</main>
+

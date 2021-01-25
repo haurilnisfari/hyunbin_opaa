@@ -1,18 +1,41 @@
-<table>
-  <tr>
-    <td> Name </td>
-  </tr>
+<!-- Main -->
+<main>
+    <section class="section-index-cat" id="index">
+        <div class="container">
+            <div class="row">
+                <div class="col text-left section-index-title-cat">
+                    <h2>Category List</h2>
+                </div>
+            </div>
+            <div class="index-list col-lg-6 pl-lg-0 align-center">
+                <table class="table table-responsive-sm text-center table-light table-striped" >
+                    <thead>
+                        <tr class="text-left">
+                            <th>Category</th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
-  <% @categories.each do |category| %>
-  <tr>
-    <td> <%= category.name %> </td>
-    <td> <%= link_to 'Detail', category_path(category) %> |
-         <%= link_to 'Edit', edit_category_path(category) %> |
-         <%= link_to 'Delete', category_path(category), method: :delete, data: {confirm: "Are you sure?"} %> </td>
-  </tr>
-  <% end %>
+                    <tbody>
+                      <% @categories.each do |category| %>
+                        <tr>
+                          <td class="text-left"><%= category.name %></td>
+                          <td class="align-middle">
+                              <%= link_to 'Edit', edit_category_path(category) %> |
+                              <%= link_to 'Delete', category_path(category), method: :delete, data: {confirm: "Are you sure?"} %> 
+                          </td>
+                        </tr>
+                      <%end%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-  <tr>
-    <td> <%= link_to 'New Category', new_category_path %> </td>
-  </tr>
-</table>
+        <div class="container">
+            <button type="submit" class="btn btn-add-new-expense">
+                <%= link_to 'Add New Category', new_category_path %>
+            </button>
+        </div>
+        
+    </section>
+</main>

@@ -1,38 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>HyunbinOpaa</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owallet</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
   </head>
 
   <body>
-    <div class="header">
-      <h2><%= link_to "HYUN BIN EXPENSE MANAGER", root_path %></h2>
-    </div>
-    <div class="card">
-      <div>
-        <% if current_user %>
-          Logged in as <%= current_user.username %> |
-          <%= link_to "Logout", logout_path %> |
-          <%= link_to "Create New Expense", new_expense_path %> |
-          <%= link_to "Create New Account", new_account_path %> |
-          <%= link_to "Create New Category", new_category_path %>
-        <% else %>
-          <%= link_to "Sign Up", signup_path %> |
-          <%= link_to "Login", login_path %>
-        <% end %>
-      </div>
+
+    <!-- Navbar -->
+    <div class="container">
+        <nav class="row navbar navbar-expand-lg navbar-light bg-white">
+            <a href="<%= expenses_path %>" class="navbar-brand">
+                <%=image_tag("logo_ow@2x.png", alt: "Logo Owallet")%>
+            </a>
+            <button 
+                class="navbar-toggler navbar-toggler-right"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navb"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navb">
+                <% if current_user %>
+                    <ul class="navbar-nav ml-auto mr-3">
+                        <li class="nav-item mx-md-2">
+                            <a href="<%= budgets_path %>" class="nav-link">Budgeting</a>
+                        </li>
+                        <li class="nav-item mx-md-2">
+                            <a href="<%= new_expense_path %>" class="nav-link active">New Expense</a>
+                        </li>
+                        <li class="nav-item mx-md-2">
+                            <a href="<%= new_account_path %>" class="nav-link">New Account</a>
+                        </li>
+                        <li class="nav-item mx-md-2">
+                            <a href="<%= new_category_path %>" class="nav-link">New Category</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown"> 
+                                <%=image_tag("avatar_1.png", height:"50", alt: "Avatar")%>
+                                Hi, <%= current_user.username %>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="<%= logout_path %>" class="dropdown-item">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                <% end %>
+            </div>
+        </nav>
     </div>
 
-
-    <p class="notice"><%= flash[:notice] %></p>
-    <p class="alert"><%= flash[:alert] %></p>
+    <!-- Header -->
+    <header class="text-center">
+        <h1>
+            Spending Well, Live Well
+        </h1>
+        <p>The quickest way to double your money is 
+            <br>
+            to fold it in half and put it in your back pocket.</p>
+    </header>
 
     <%= yield %>
+
+    <!-- Footer -->
+    <footer class="section-footer pt-3 pb-3 border-top">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-12 text-center">
+                    2020 Copyright Owallet. All right reserved. Made in Special Region of Yogyakarta
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   </body>
 </html>

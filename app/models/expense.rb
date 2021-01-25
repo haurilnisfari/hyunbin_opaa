@@ -14,4 +14,21 @@ class Expense < ApplicationRecord
     where(category_id: category_id)
   end
 
+  def self.to_csv
+    attributes = %w{id name amount date category_id account_id}
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |expense|
+        csv << expense.attributes.values_at(*attributes)
+      end
+    end
+  end
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      Expense.create! row.to_hash
+    end
+  end
+
 end

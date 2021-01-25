@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="frontend/styles/main.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="container">
+        <nav class="row navbar navbar-expand-lg navbar-light bg-white">
+            <a href="#" class="navbar-brand">
+                <img src="frontend/images/logo_ow@2x.png" alt="Logo Owallet">
+            </a>
+            <button 
+                class="navbar-toggler navbar-toggler-right"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navb"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navb">
+                <ul class="navbar-nav ml-auto mr-3">
+                    <li class="nav-item mx-md-2">
+                        <a href="#" class="nav-link active">New Expense</a>
+                    </li>
+                    <li class="nav-item mx-md-2">
+                        <a href="#" class="nav-link">New Account</a>
+                    </li>
+                    <li class="nav-item mx-md-2">
+                        <a href="#" class="nav-link">New Category</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown"> 
+                            <img src="frontend/images/avatar_1.png" height="50">
+                            Hi, Nararya
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">Setting</a>
+                            <a href="#" class="dropdown-item">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- Header -->
+    <header class="text-center">
+        <h1>
+            Spending Well, Live Well
+        </h1>
+        <p>The quickest way to double your money is 
+            <br>
+            to fold it in half and put it in your back pocket.</p>
+    </header>
+    <!-- Main -->
+    <main>
+        <section class="section-category-form">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 pl-lg-0">
+                        <div class="card card-category">
+                            <div class="category-new mt 3">
+                                <h2 class="heading-new-category">Create New Category</h2>
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3" for="name">Name</label>
+                                        <div class="col-sm-10">
+                                            <input type="name" class="form-control" id="name" placeholder="Enter Name" name="name">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-save-category mb-2 px-4">
+                                        Save
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer  -->
+    <footer class="section-footer pt-3 pb-3 border-top">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-12 text-center">
+                    2020 Copyright Owallet. All right reserved. Made in Special Region of Yogyakarta
+                </div>
+            </div>
+        </div>
+    </footer>
+
+   
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+</body>
+</html>

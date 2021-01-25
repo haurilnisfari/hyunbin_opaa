@@ -29,6 +29,27 @@ class ExpensesController < ApplicationController
     else
       redirect_to new_account_path, notice: "You don't have an Account, Please Create an Account!"
     end
+
+    respond_to do |format|
+      format.html
+      format.csv {send_data @expenses.to_csv, filename: "expense-#{Date.today}.csv"}
+    end
+  end
+
+  # def import
+  #   @import = Expense::Import.new expense_import_params
+  #   if @import.save
+  #     redirect_to expenses_path, notice: "Imported #{@import.imported_count} expenses"
+  #   else
+  #     @expenses = Expense.all
+  #     flash[:alert] = "There were #{"@import.errors.count"} errors with your CSV file"
+  #     render action: :index
+  #   end
+  # end
+
+  def import
+    Expense.import(params[:file])
+    redirect_to root_url, notice: "Expense imported"
   end
 
   def show
@@ -75,4 +96,7 @@ class ExpensesController < ApplicationController
     Account.where(id: account_id).pluck(:name).join(" ")
   end
 
+  # def expense_import_params
+  #   params.require(:expense_import).permit(:file)
+  # end
 end
