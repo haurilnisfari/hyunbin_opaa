@@ -31,7 +31,10 @@
                                         <div class="col-sm-10">
                                             <%= f.date_field :date, :class => "form-control", :value => Time.now.strftime('%Y-%m-%d') %>
                                         </div> </br>
-
+                                        
+                                        <button type="submit" class="btn btn-cancel">
+                                            <%= link_to 'Cancel', :back%>
+                                        </button>
                                         <%= f.submit "Save" , { class: "btn btn-save-account mb-2 px-4" } %>
                                     <% end %>
                                 </div>

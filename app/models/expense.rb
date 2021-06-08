@@ -1,4 +1,5 @@
 class Expense < ApplicationRecord
+  paginates_per 10
   belongs_to :category
   belongs_to :account
   validates :name, presence: true, length: {minimum: 3}

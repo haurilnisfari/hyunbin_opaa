@@ -1,2 +1,39 @@
-<h1> Category ke-<%= @category.id %> </h1>
-<p> Name : <%= @category.name %> </p>
+<main>
+    <section class="section-category-form">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 pl-lg-0">
+                    <div class="card card-category">
+                        <div class="category-detail mt 3">
+                            <h2 class="heading-new-expense">Detail Category</h2>
+                            <div class="form-group">
+                                <%= form_for(@category) do |f| %>
+                                    <%= f.label :name, { class: "control-label col-sm-3"} %> :  
+                                    <%=  @category.name %>
+                                    </br>
+                                    <% if @category.parent_id? %>
+                                        <%= f.label :parent_id, { class: "control-label col-sm-3"} %> :
+                                        <%=  Category.find(@category.parent_id).name %>
+                                        </br>
+                                    <% end %>
+                                    <% if @subcategory.exists? %>
+                                        <%= f.label :SubCategory, { class: "control-label col-sm-3"} %> : 
+                                        <ul>
+                                        <% @subcategory.each do |sub| %>
+                                            <li><%= sub.name %></li>
+                                        <% end %>
+                                        </ul>
+                                    <% end %>
+                                    </br>
+                                    <button type="submit" class="btn btn-add-new-expense">
+                                        <%= link_to 'Back to Categories', categories_path %>
+                                    </button>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section
+</main>

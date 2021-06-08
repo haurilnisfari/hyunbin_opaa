@@ -1,9 +1,12 @@
 class CategoriesController < ApplicationController
   before_action :require_login
-
+  
   def new
     if current_user && current_user[:account_id]
       @category = Category.new
+      @category.parent_category = Category.find(params[:id]) unless params[:id].nil?
+      all = Category.all
+      @categories = all.where(parent_id=nil)
     else
       redirect_to new_account_path, notice: "You don't have an Account, Please Create an Account!"
     end
@@ -16,15 +19,25 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.all
+    @category = nil
+    all = Category.all
+    @parents = all.where(parent_id:nil)
   end
 
   def show
     @category = Category.find(params[:id])
+    @categories = Category.all
+    #jika ada category lain yg punya parent_id == id nya dia, maka dikatakan dia punya subcategory
+    #maka di looping
+    id = @category.id
+    @subcategory = @categories.where(parent_id:id)
+    
   end
 
   def edit
     @category = Category.find(params[:id])
+    all = Category.all
+    @categories = all.where(parent_id=nil)
   end
 
   def update
@@ -42,7 +55,7 @@ class CategoriesController < ApplicationController
   private
 
   def resource_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name, :parent_id)
   end
 
 end

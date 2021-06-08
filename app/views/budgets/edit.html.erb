@@ -19,19 +19,21 @@
                                 </div>
 
                                 <%= f.fields_for :budget_categories do |builder| %>
-                                    <%= builder.label :category_id, "Category", { class: "control-label col-sm-3"} %> 
-                                    <div class="col-sm-10">
-                                        <%= builder.text_field :category_id %>
-                                    </div>
+                                    <div class="builder"
+                                        <%= builder.label :category_id, "Category", { class: "control-label col-sm-3"} %> 
+                                        <div class="col-sm-10">
+                                            <%= builder.text_field :category_id %>
+                                        </div>
 
-                                    <%= builder.label :amount, "Budget Plan", { class: "control-label col-sm-3"} %> 
-                                    <div class="col-sm-10">
-                                        <%= builder.text_field :amount %> 
-                                    </div>
+                                        <%= builder.label :amount, "Budget Plan", { class: "control-label col-sm-3"} %> 
+                                        <div class="col-sm-10">
+                                            <%= builder.text_field :amount %> 
+                                        </div>
 
-                                    <%= builder.check_box :_destroy %>
-                                    <%= builder.label :_destroy, "Remove" %>
-                                    </br>
+                                        <%= builder.hidden_field :_destroy %>
+                                        <%= link_to_function "remove", remove_fields(this) %>
+                                        </br>
+                                    </div>
                                 <% end %>
                                 
                                 <%= f.submit "Save" , { class: "btn btn-save-account mb-2 px-4" } %>
