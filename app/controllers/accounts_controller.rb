@@ -17,7 +17,7 @@ class AccountsController < ApplicationController
 
 
   def index
-    @accounts = Account.where(id: current_user.account_id)
+    @accounts = Account.where(id: current_user.account_id).page(params[:page])
   end
 
   def show

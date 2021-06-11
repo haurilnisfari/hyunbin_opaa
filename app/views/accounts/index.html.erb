@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="index-list col-lg-6 pl-lg-0 align-center">
-                <table class="table table-responsive-sm text-center table-light table-striped" >
+                <table class="table table-responsive-sm text-center table-light table-striped" id="account-table" >
                     <thead>
                         <tr class="text-left">
                             <th>Name</th>
@@ -28,6 +28,7 @@
                       <%end%>
                     </tbody>
                 </table>
+                <%= paginate @accounts, params: { anchor: "account-table" }  %>
             </div>
         </div>
 

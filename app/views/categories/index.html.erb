@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="index-list col-lg-6 pl-lg-0 align-center">
-                <table class="table table-responsive-sm text-center table-light table-striped">
+                <table class="table table-responsive-sm text-center table-light table-striped" id="category-table">
                     <thead>
                         <tr class="text-left">
                             <th>Category</th>
@@ -17,13 +17,13 @@
                     </thead>
 
                     <tbody>
-                      <% @parents.each do |parent| %>
+                      <% @categories.each do |category| %>
                         <tr>
                           <td class="text-left">
-                            <%= parent.name %>
+                            <%= category.name %>
                           
                             <ul>
-                            <% Category.where(parent_id: parent.id).each do |sub| %>
+                            <% Category.where(parent_id: category.id).each do |sub| %>
                                 <li><%= sub.name %>
                                 <%= link_to 'Detail', category_path(sub) %> |
                                 <%= link_to 'Edit', edit_category_path(sub) %> |
@@ -33,14 +33,15 @@
                             </ul>
                           </td>
                           <td class="align-middle">
-                              <%= link_to 'Detail', category_path(parent) %> |
-                              <%= link_to 'Edit', edit_category_path(parent) %> |
-                              <%= link_to 'Delete', category_path(parent), method: :delete, data: {confirm: "Are you sure?"} %> 
+                              <%= link_to 'Detail', category_path(category) %> |
+                              <%= link_to 'Edit', edit_category_path(category) %> |
+                              <%= link_to 'Delete', category_path(category), method: :delete, data: {confirm: "Are you sure?"} %> 
                           </td>
                         </tr>
                       <%end%>
                     </tbody>
                 </table>
+                <%= paginate @categories %>
             </div>
         </div>
 

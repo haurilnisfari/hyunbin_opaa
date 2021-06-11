@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
   def index
     @category = nil
     all = Category.all
-    @parents = all.where(parent_id:nil)
+    @categories = all.where(parent_id:nil).page(params[:page])
   end
 
   def show
