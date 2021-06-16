@@ -31,7 +31,14 @@
                                 <td><%= sum_this_month_expense(category) %></td>
                                 <td><%= sum_last_month_expense(category) %></td>
                             </tr>
+                           
                         <%end%>
+                        <tr class ="align-left">
+                            <th>Jumlah Total</th>
+                            <td></td>
+                            <td><%= total_sum_this_month_expense %></td>
+                            <td><%= total_sum_last_month_expense %></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

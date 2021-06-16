@@ -74,11 +74,21 @@ class BudgetsController < ApplicationController
     end
     helper_method :sum_this_month_expense
 
+    def total_sum_this_month_expense
+      this_month = Expense.where(date: Date.today.beginning_of_month..Date.today.end_of_month).sum(:amount)
+    end
+    helper_method :total_sum_this_month_expense
+
     def sum_last_month_expense(category)
       category = category.get_id_and_child_ids
       last_month = Expense.where(date: Date.today.last_month.beginning_of_month..Date.today.last_month.end_of_month, category_id: category ).sum(:amount)
     end
     helper_method :sum_last_month_expense
+
+    def total_sum_last_month_expense
+      last_month = Expense.where(date: Date.today.last_month.beginning_of_month..Date.today.last_month.end_of_month).sum(:amount)
+    end
+    helper_method :total_sum_last_month_expense
 
   
   end
