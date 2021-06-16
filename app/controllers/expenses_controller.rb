@@ -22,9 +22,9 @@ class ExpensesController < ApplicationController
 
   def index
     if current_user && current_user[:account_id]
-      @expenses = Expense.based_account_id(current_user[:account_id]).order(sort_column + " " + sort_direction)
+      @expenses = Expense.based_account_id(current_user[:account_id]).order(sort_column + " " + sort_direction).page(params[:page])
       if current_user && current_user[:account_id] && params[:expense] && params[:expense][:category_id].present?
-        @expenses = Expense.based_account_id(current_user[:account_id]).filter_by_category(params[:expense][:category_id])
+        @expenses = Expense.based_account_id(current_user[:account_id]).filter_by_category(params[:expense][:category_id]).page(params[:page])
       end
     else
       redirect_to new_account_path, notice: "You don't have an Account, Please Create an Account!"

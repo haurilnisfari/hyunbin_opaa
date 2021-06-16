@@ -21,7 +21,7 @@ class BudgetsController < ApplicationController
 
     def index
         @budgets = Budget.all.order(sort_column + " " + sort_direction)
-        @categories = Category.all
+        @categories = Category.where(parent_id:nil)
         @expenses = Expense.all
     end
 
@@ -67,6 +67,18 @@ class BudgetsController < ApplicationController
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
+
+    def sum_this_month_expense(category)
+      category = category.get_id_and_child_ids
+      this_month = Expense.where(date: Date.today.beginning_of_month..Date.today.end_of_month, category_id: category ).sum(:amount)
+    end
+    helper_method :sum_this_month_expense
+
+    def sum_last_month_expense(category)
+      category = category.get_id_and_child_ids
+      last_month = Expense.where(date: Date.today.last_month.beginning_of_month..Date.today.last_month.end_of_month, category_id: category ).sum(:amount)
+    end
+    helper_method :sum_last_month_expense
 
   
   end

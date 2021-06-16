@@ -6,28 +6,30 @@
                 <div class="col text-left section-index-title-cat">
                     <h2>Budgeting</h2>
                 </div>
+                  <div class="col text-right">
+                    <button type="submit" class="btn btn-add-new-expense">
+                        <%= link_to 'Edit', new_budget_path %>
+                    </button>
+                </div>
             </div>
             <div class="index-list col-lg-12 pl-lg-12 align-center">
                 <table class="table table-responsive-sm text-center table-light table-striped" >
                     <thead>
                         <tr class="align-left">
-                            <th><%= sortable "name" %></th>
-                            <th><%= sortable "period" %></th>
-                            <th>Total Budget</th>
+                            <th>Budget Name</th>
+                            <th>Expense Budgeting </br> <%= Date.today.beginning_of_month.strftime("%d %b %Y") %> - <%= Date.today.end_of_month.strftime("%d %b %Y") %></th>
+                            <th>This Month Expense </br> <%= Date.today.beginning_of_month.strftime("%d %b %Y") %> - <%= Date.today.end_of_month.strftime("%d %b %Y") %></th>
+                            <th>Last Month Expense </br> <%= Date.today.last_month.beginning_of_month.strftime("%d %b %Y") %> - <%= Date.today.last_month.end_of_month.strftime("%d %b %Y") %></th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <% @budgets.each do |budget| %>
+                        <% @categories.each do |category| %>
                             <tr class= "align-left">
-                                <td><%= budget.name %></td>
-                                <td><%= budget.period %></td>
+                                <td><%= category.name %></td>
                                 <td>12000000</td>
-                                <td class="align-middle">
-                                    <%= link_to 'Detail', budget_path(budget) %> |
-                                    <%= link_to 'Edit', edit_budget_path(budget) %> |
-                                    <%= link_to 'Delete', budget_path(budget), method: :delete, data: {confirm: "Are you sure?"} %> 
-                                </td>
+                                <td><%= sum_this_month_expense(category) %></td>
+                                <td><%= sum_last_month_expense(category) %></td>
                             </tr>
                         <%end%>
                     </tbody>
@@ -35,11 +37,7 @@
             </div>
         </div>
 
-        <div class="container">
-            <button type="submit" class="btn btn-add-new-expense">
-                <%= link_to 'Add New Budget', new_budget_path %>
-            </button>
-        </div>
+      
         
     </section>
 </main>
