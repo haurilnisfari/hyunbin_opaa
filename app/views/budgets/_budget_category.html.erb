@@ -1,0 +1,11 @@
+<tr>
+    <td>
+        <%= f.select :category_id, @categories.pluck(:name, :id), {prompt: "Select Category"}, {class: "form-control select-menu menus", required: true} %>
+    </td>
+
+    <td>
+        <%= f.text_field :amount, :class => "form-control price", required: true%>
+    </td>
+<tr>
+
+  

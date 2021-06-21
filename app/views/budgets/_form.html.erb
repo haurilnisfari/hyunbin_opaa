@@ -1,0 +1,55 @@
+<main>
+    <section class="section-budget-form">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 pl-lg-0">
+                    <div class="card card-category">
+                        <div class="categry-new mt 3">
+                            <h2 class="heading-new-category">Create New Budget</h2>
+                            <div class="form-group">
+                              <%= form_for(@budget) do |f| %>
+                                <%= f.label :name, { class: "control-label col-sm-3" }%>
+                                <div class="col-sm-10">
+                                  <%= f.text_field :name, :class => "form-control", :placeholder => "Enter Budget Name" %> </br>
+                                </div>
+
+                                <%= f.label :period, { class: "control-label col-sm-3"} %>
+                                <div class="col-sm-10">
+                                    <%= f.date_field :period, :class => "form-control", :value => Time.now.beginning_of_month.strftime('%Y-%m-%d') %> </br>
+                                </div> 
+                                </br>
+
+                                <h4 class="control-label col-sm-6" > Budget per Category </h4>
+                                </br>
+                                <table class='table'>
+                                    <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody >
+                                        <% @categories.each do |cat| %>
+                                            <tr>
+                                                <td>
+                                                    <%= cat.name  %>
+                                                    <%= hidden_field_tag "category_ids[]", cat.id, :class => "form-control"%>
+                                                </td>
+                                                <td>
+                                                    <%= text_field_tag "amounts[]", nil, :class => "form-control price"%>
+                                                </td>
+                                            <tr>
+                                        <% end %>
+                                    </tbody>
+                                </table>
+                                </br>
+                                <%= f.submit "Save" , { class: "btn btn-save-account mb-2 px-4" } %>
+                              <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

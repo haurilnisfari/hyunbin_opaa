@@ -27,7 +27,7 @@
                         <% @categories.each do |category| %>
                             <tr class= "align-left">
                                 <td><%= category.name %></td>
-                                <td>12000000</td>
+                                <td><%= @budget_categories.where(category_id: category.id, created_at: Date.today.beginning_of_month..Date.today.end_of_month).first.amount%></td>
                                 <td><%= sum_this_month_expense(category) %></td>
                                 <td><%= sum_last_month_expense(category) %></td>
                             </tr>
@@ -35,9 +35,9 @@
                         <%end%>
                         <tr class ="align-left">
                             <th>Jumlah Total</th>
-                            <td></td>
-                            <td><%= total_sum_this_month_expense %></td>
-                            <td><%= total_sum_last_month_expense %></td>
+                            <th><%= total_sum_expense_budgeting %></th>
+                            <th><%= total_sum_this_month_expense %></th>
+                            <th><%= total_sum_last_month_expense %></th>
                         </tr>
                     </tbody>
                 </table>

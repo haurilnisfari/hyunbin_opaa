@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_05_155029) do
+ActiveRecord::Schema.define(version: 2021_06_20_034310) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2021_06_05_155029) do
     t.integer "budget_id"
     t.integer "category_id"
     t.integer "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "budgets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

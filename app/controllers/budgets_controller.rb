@@ -5,8 +5,9 @@ class BudgetsController < ApplicationController
     def new
         if current_user && current_user[:account_id]
           @budget = Budget.new
-          @categories = Category.all
-          3.times { @budget.budget_categories.build }
+          @categories = Category.where(parent_id:nil)
+          @budget_categories = BudgetCategory.all
+          # 3.times { @budget.budget_categories.build }
           # @budget.budget_categories.build
         else
           redirect_to new_account_path, notice: "You don't have an Account, Please Create an Account!"
@@ -14,8 +15,35 @@ class BudgetsController < ApplicationController
       end
     
       def create
-        @budget = Budget.new(resource_params)
-        @budget.save
+        category_ids = params[:category_ids]
+        amounts = params[:amounts]
+        category_map_amount = []
+
+        category_ids.each_with_index do |cat_id, index|
+          hash = {
+            category_id: cat_id,
+            amount: amounts[index]
+          }
+
+          category_map_amount << hash
+
+        end
+
+        budget = Budget.new(resource_params)
+        budget.save
+
+        category_map_amount.each do |cat_amount|
+          budget_category = BudgetCategory.new
+          budget_category.budget_id = budget.id
+          budget_category.category_id = cat_amount[:category_id]
+          if cat_amount[:amount].present?
+            budget_category.amount = cat_amount[:amount]
+          else
+            budget_category.amount = 0
+          end
+          budget_category.save
+        end
+
         redirect_to budgets_path
       end
 
@@ -23,6 +51,7 @@ class BudgetsController < ApplicationController
         @budgets = Budget.all.order(sort_column + " " + sort_direction)
         @categories = Category.where(parent_id:nil)
         @expenses = Expense.all
+        @budget_categories = BudgetCategory.all
     end
 
   
@@ -57,7 +86,7 @@ class BudgetsController < ApplicationController
     private
   
     def resource_params
-      params.require(:budget).permit(:id, :name, :period, budget_categories_attributes:[:category_id, :amount])
+      params.require(:budget).permit(:id, :name, :period)
     end
 
     def sort_column
@@ -67,6 +96,11 @@ class BudgetsController < ApplicationController
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
+
+    def total_sum_expense_budgeting
+      total_budgeting = BudgetCategory.where(created_at: Date.today.beginning_of_month..Date.today.end_of_month).sum(:amount)
+    end
+    helper_method :total_sum_expense_budgeting
 
     def sum_this_month_expense(category)
       category = category.get_id_and_child_ids
@@ -90,6 +124,7 @@ class BudgetsController < ApplicationController
     end
     helper_method :total_sum_last_month_expense
 
-  
+   
+
   end
   
