@@ -8,6 +8,8 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require('jquery')
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -19,11 +21,34 @@ require("channels")
 import 'bootstrap/dist/js/bootstrap';
 import 'bootstrap-daterangepicker/daterangepicker'
 
-require("selectize")
-require("packs/category")
 
 
 function remove_fields (link) {
     $(link).previous("input[type=hidden]").value = "1";
     $(link).up(".builder").hide();
 }
+
+
+
+$(document).on("turbolinks:load", function() {
+    $(".budget-amount-input").hide();
+    $("#button-cancel-edit-budget-amount").hide()
+    $("#button-save-budget-amount").hide()
+
+    $("#button-edit-budget-amount").on("click", function(){
+        $(".budget-amount-text").hide();
+        $(".budget-amount-input").show();
+        $("#button-cancel-edit-budget-amount").show()
+        $("#button-save-budget-amount").show()
+        $("#button-edit-budget-amount").hide()
+    })
+
+    $("#button-cancel-edit-budget-amount").on("click", function() {
+        $(".budget-amount-text").show();
+        $(".budget-amount-input").hide();
+        $("#button-cancel-edit-budget-amount").hide()
+        $("#button-save-budget-amount").hide()
+        $("#button-edit-budget-amount").show()
+    })
+
+})

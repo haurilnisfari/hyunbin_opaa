@@ -2,6 +2,7 @@
   "name": "hyunbin_opaa",
   "private": true,
   "dependencies": {
+    "@popperjs/core": "^2.9.2",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
@@ -11,7 +12,6 @@
     "expose-loader": "^0.7.5",
     "jquery": "3.6.0",
     "moment": "^2.26.0",
-    "popper.js": "^1.16.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "selectize": "^0.12.6",

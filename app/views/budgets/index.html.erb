@@ -7,8 +7,16 @@
                     <h2>Budgeting</h2>
                 </div>
                   <div class="col text-right">
-                    <button type="submit" class="btn btn-add-new-expense">
-                        <%= link_to 'Edit', new_budget_path %>
+                    <button class="btn btn-add-new-expense" id="button-cancel-edit-budget-amount">
+                        Cancel
+                    </button>
+
+                    <button class="btn btn-add-new-expense" id="button-save-budget-amount">
+                        Save
+                    </button>
+
+                    <button class="btn btn-add-new-expense" id="button-edit-budget-amount">
+                        Edit
                     </button>
                 </div>
             </div>
@@ -27,7 +35,11 @@
                         <% @categories.each do |category| %>
                             <tr class= "align-left">
                                 <td><%= category.name %></td>
-                                <td><%= @budget_categories.where(category_id: category.id, created_at: Date.today.beginning_of_month..Date.today.end_of_month).first.amount%></td>
+                                <td>
+                                    <% budget_category = @budget_categories.where(category_id: category.id, created_at: Date.today.beginning_of_month..Date.today.end_of_month).first.amount %>
+                                    <span class="budget-amount-text"><%= budget_category %></span>
+                                    <input type="text" value="<%= budget_category %>" class="budget-amount-input"/>
+                                </td>
                                 <td><%= sum_this_month_expense(category) %></td>
                                 <td><%= sum_last_month_expense(category) %></td>
                             </tr>
