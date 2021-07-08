@@ -20,8 +20,8 @@
                     </button>
                 </div>
             </div>
-            <div class="index-list col-lg-12 pl-lg-12 align-center">
-                <table class="table table-responsive-sm text-center table-light table-striped" >
+            <div class="index-list col-lg-12 pl-lg-12">
+                <table class="table table-responsive-sm table-light table-striped" >
                     <thead>
                         <tr class="align-left">
                             <th>Budget Name</th>
@@ -36,7 +36,7 @@
                             <tr class= "align-left">
                                 <td><%= category.name %></td>
                                 <td>
-                                    <% budget_category = @budget_categories.where(category_id: category.id, created_at: Date.today.beginning_of_month..Date.today.end_of_month).first.amount %>
+                                    <% budget_category = @budget_categories.where(category_id: category.id).first.amount %>
                                     <span class="budget-amount-text"><%= budget_category %></span>
                                     <input type="text" value="<%= budget_category %>" class="budget-amount-input"/>
                                 </td>

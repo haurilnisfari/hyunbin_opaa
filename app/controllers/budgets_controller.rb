@@ -48,10 +48,15 @@ class BudgetsController < ApplicationController
       end
 
     def index
+      if BudgetCategory.where(created_at: Date.today.beginning_of_month..Date.today.end_of_month).present?
         @budgets = Budget.all.order(sort_column + " " + sort_direction)
         @categories = Category.where(parent_id:nil)
         @expenses = Expense.all
-        @budget_categories = BudgetCategory.all
+        @budget_categories = BudgetCategory.where(created_at: Date.today.beginning_of_month..Date.today.end_of_month)
+      else
+        flash[:notice] = "You haven't crate Budgeting this Month, Please Create first!"
+        redirect_to new_budget_path
+      end
     end
 
   
